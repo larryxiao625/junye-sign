@@ -1,13 +1,9 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/userConsole/userConsole",
-    "pages/storageConsole/storageConsole",
-    "pages/databaseGuide/databaseGuide",
-    "pages/addFunction/addFunction",
-    "pages/deployFunctions/deployFunctions",
-    "pages/chooseLib/chooseLib",
-    "pages/openapi/openapi"
+    "pages/person/person",
+    "pages/rank/rank",
+    "pages/share/share",
+    "pages/sing/sing"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -15,6 +11,29 @@
     "navigationBarBackgroundColor": "#F6F6F6",
     "navigationBarTitleText": "云开发 QuickStart",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [{
+      "pagePath": "pages/sing/sing",
+      "text": "签到",
+      "iconPath": "images/sign.png",
+      "selectedIconPath": "images/sign.png"
+    },{
+      "pagePath":"pages/rank/rank",
+      "text" : "排行",
+      "iconPath" : "images/rank.png",
+      "selectedIconPath": "images/rank.png"
+    },{
+      "pagePath" : "pages/share/share",
+      "text" : "每日分享",
+      "iconPath" : "images/share.png",
+      "selectedIconPath": "images/share.png"
+    },{
+      "text" : "个人中心",
+      "pagePath" : "pages/person/person",
+      "iconPath" : "images/person.png",
+      "selectedIconPath": "images/person.png"
+    }]
   },
   "sitemapLocation": "sitemap.json"
 }
