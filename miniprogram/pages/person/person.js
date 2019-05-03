@@ -89,10 +89,8 @@ Page({
           wx.authorize({
             scope: 'scope.userInfo',
             success(){
-              console.log("success");
               wx.getUserInfo({
                 success(res){
-                  console.log(res.userInfo);
                   getUserInfoThis.setData({
                     userInfo: res.userInfo,
                     hasUserInfo: true

@@ -1,9 +1,19 @@
-.userinfo{
+.getUserInfoButton{
+  color: #ffffff;
+  background-color: #26e90d;
+  width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 16px;
+  margin-top: 400rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+.getUserInfoButton{
+  color: #ffffff;
+  line-height: 50px;
+}
 .userinfo-avatar {
   width: 128rpx;
   height: 128rpx;
@@ -13,4 +23,10 @@
 
 .userinfo-nickname {
   color: #aaa;
+}
+
+.userInfoShow{
+  display: flex;
+  flex-direction: column;
+  
 }

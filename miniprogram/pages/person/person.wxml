@@ -1,9 +1,11 @@
 <view class='container'>
   <view class='userinfo'>
-    <button id="getUserInfoButton" wx:if="{{canIUse&&!hasUserInfo}}" open-type='getUserInfo' bindgetuserinfo='onGetUserInfo'>授权</button>
+    <button class="getUserInfoButton" wx:if="{{canIUse&&!hasUserInfo}}" open-type='getUserInfo' bindgetuserinfo='onGetUserInfo'>微信授权</button>
     <block wx:elif="{{canIUse&&hasUserInfo}}">
+    <view class="userInfoShow">
       <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+      <text class="userinfo-nickname" style='text-align:center'>{{userInfo.nickName}}</text>
+    </view>
     </block>
   </view>
 </view>
