@@ -1,17 +1,35 @@
+const app = getApp()
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-    
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    hasUserInfo: false,
+    userInfo:{}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    var personThis=this;
+    if(this.data.canIUse){
+      wx.getSetting({
+        success(res){
+          if(res.authSetting['scope.userInfo']){
+            wx.getUserInfo({
+              success(res){
+                personThis.setData({
+                  userInfo: res.userInfo,
+                  hasUserInfo: true
+                })
+              }
+            })
+          }
+        }
+      })
+    }
   },
 
   /**
@@ -61,5 +79,30 @@ Page({
    */
   onShareAppMessage: function () {
     
+  },
+
+  onGetUserInfo:function(){
+    var getUserInfoThis=this;
+    wx.getSetting({
+      success(res){
+        if(!res.authSetting['scope.userInfo'] || !getUserInfoThis.hasUserInfo){
+          wx.authorize({
+            scope: 'scope.userInfo',
+            success(){
+              console.log("success");
+              wx.getUserInfo({
+                success(res){
+                  console.log(res.userInfo);
+                  getUserInfoThis.setData({
+                    userInfo: res.userInfo,
+                    hasUserInfo: true
+                  })
+                }
+              })
+            }
+          })
+        }
+      }
+    })
   }
 })
