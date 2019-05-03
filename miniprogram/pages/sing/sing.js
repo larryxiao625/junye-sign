@@ -110,7 +110,7 @@ Page({
           activityId: signThis.data.nowActivity._id,
         }
       }).then(res=>{
-        console.log(res.result)
+        console.log(res)
       }).catch(console.error)
     };
   }

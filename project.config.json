@@ -10,7 +10,7 @@
 	},
 	"appid": "wx74fdea08558b6d43",
 	"projectname": "junye-sign",
-	"libVersion": "2.2.5",
+	"libVersion": "2.6.6",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",
