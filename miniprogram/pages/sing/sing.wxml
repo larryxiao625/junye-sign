@@ -1,7 +1,12 @@
 <view class="container">
   <view class="签到">
-    <button class="signButton" wx:if="{{isSign}}">已签到</button>
-    <button class="signButton"  bindtap='sign' wx:if="{{!isSign}}">签到</button>
+  <block wx:if="{{hasActivity}}">
+      <button class="signButton" wx:if="{{isSign}}">已签到</button>
+      <button class="signButton"  bindtap='sign' wx:if="{{!isSign}}">签到</button>
+  </block>
+  <block wx:else>
+    <button class="signButton">当前无活动</button>
+  </block>
     <view class="activityName">
       <text id="activityName">活动名称:{{nowActivity.name}}</text>
     </view>

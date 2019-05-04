@@ -16,49 +16,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var signThis=this;
-    var date=new Date();
-    console.log(date);
-    db.collection("activity").where(_.and([
-      {
-        beginTime: _.lt(date)
-      },
-      {
-        endTime: _.gt(date)
-      }
-    ])
-    ).get({
-      success: res=>{
-        console.log(res.data[0]);
-        signThis.setData({
-          nowActivity: res.data[0],
-          hasActivity: true
-        });
-      }
-    })
-    db.collection("activity").where({
-      beginTime: _.gt(date)
-    }).get({
-      success: res=>{
-        console.log(res.data);
-        console.log(res.data.length);
-        if(res.data.length>0){
-          console.log(res.data.length)
-         for(var i=0;i<res.data.length;i++){
-           console.log(util.formatTime(res.data[i].beginTime))
-           console.log(res.data[i].name);
-           signThis.data.afterActivity[i]={
-             activityName: res.data[i].name,
-             beginTime: util.formatTime(res.data[i].beginTime)
-           }
-         } 
-        console.log(signThis.data.afterActivity);
-         signThis.setData({
-          afterActivity: signThis.data.afterActivity
-         })
-        }
-      }
-    })
+
   },
 
   /**
@@ -72,7 +30,55 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    var signThis = this;
+    var date = new Date();
+    console.log(date);
+    db.collection("activity").where(_.and([
+      {
+        beginTime: _.lt(date)
+      },
+      {
+        endTime: _.gt(date)
+      }
+    ])
+    ).get({
+      success: res => {
+        console.log(res.data[0]);
+        if(res.data[0]===undefined){
+          signThis.setData({
+            hasActivity:false
+          })
+        }else{
+          signThis.setData({
+            nowActivity: res.data[0],
+            hasActivity: true
+          });
+        }
+      }
+    })
+    db.collection("activity").where({
+      beginTime: _.gt(date)
+    }).get({
+      success: res => {
+        console.log(res.data);
+        console.log(res.data.length);
+        if (res.data.length > 0) {
+          console.log(res.data.length)
+          for (var i = 0; i < res.data.length; i++) {
+            console.log(util.formatTime(res.data[i].beginTime))
+            console.log(res.data[i].name);
+            signThis.data.afterActivity[i] = {
+              activityName: res.data[i].name,
+              beginTime: util.formatTime(res.data[i].beginTime)
+            }
+          }
+          console.log(signThis.data.afterActivity);
+          signThis.setData({
+            afterActivity: signThis.data.afterActivity
+          })
+        }
+      }
+    })
   },
 
   /**
