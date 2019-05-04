@@ -4,7 +4,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    
+    tabCount:[{
+      "title": "周排名",
+      "rank": []
+    },{
+      "title": "月排名",
+      "rank": []
+    }]
   },
 
   /**

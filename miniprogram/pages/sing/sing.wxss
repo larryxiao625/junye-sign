@@ -1,6 +1,6 @@
 .container{
   background-color: #EFEFF4;
-  height: 100vh
+  height: 100vh;
 }
 .signButton{
   color: #ffffff;
