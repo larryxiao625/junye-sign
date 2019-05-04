@@ -103,15 +103,54 @@ Page({
   sign:function(){
     var signThis=this;
     console.log(signThis.data.nowActivity._id);
-    if(signThis.data.hasActivity){
-      wx.cloud.callFunction({
-        name: 'sign',
-        data: {
-          activityId: signThis.data.nowActivity._id,
+    wx.getSetting({
+      success(res){
+        if(res.authSetting["scope.userLocation"]){
+          signCloudFunction(signThis);
+        }else{
+          wx.authorize({
+            scope: 'scope.userLocation',
+            success(){
+              signCloudFunction(signThis);
+            },
+            fail(){
+              wx.showToast({
+                title: '请授权权限以签到',
+              })
+            }
+          })
         }
-      }).then(res=>{
-        console.log(res)
-      }).catch(console.error)
-    };
-  }
+      }
+    })
+  },
 })
+function signCloudFunction(signThis) {
+  if (signThis.data.hasActivity) {
+    wx.getLocation({
+      success: function (res) {
+        wx.cloud.callFunction({
+          name: 'sign',
+          data: {
+            activityId: signThis.data.nowActivity._id,
+            longitude: res.longitude,
+            latitude: res.latitude
+          }
+        }).then(res => {
+          console.log(res);
+          if(res.result.isSign){
+            signThis.setData({
+              isSign: true
+            })
+          }else{
+            signThis.setData({
+              isSign: false
+            })
+          }
+          wx.showToast({
+            title: res.result.toastTitle,
+          })
+        }).catch(console.error)
+      },
+    })
+  };
+}

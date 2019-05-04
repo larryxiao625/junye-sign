@@ -35,5 +35,10 @@
       "selectedIconPath": "images/person.png"
     }]
   },
+  "permission":{
+    "scope.userLocation":{
+      "desc": "你的位置信息将用于签到位置确定"
+    }
+  },
   "sitemapLocation": "sitemap.json"
 }

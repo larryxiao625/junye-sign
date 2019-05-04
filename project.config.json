@@ -6,7 +6,10 @@
 		"es6": true,
 		"postcss": true,
 		"minified": true,
-		"newFeature": true
+		"newFeature": true,
+		"nodeModules": false,
+		"autoAudits": false,
+		"checkInvalidKey": true
 	},
 	"appid": "wx74fdea08558b6d43",
 	"projectname": "junye-sign",
