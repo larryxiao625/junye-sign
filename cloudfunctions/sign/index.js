@@ -29,7 +29,7 @@ function isInArea(latitudePeople, longitudePeople, latitudeLocation, longitudeLo
   h2 = (3 * r + 1) / 2 / s;
   s = d * (1 + fl * (h1 * sf * (1 - sg) - h2 * (1 - sf) * sg));
   console.log(s);
-  if(s>150){
+  if(s>100){
     return false;
   }else{
      return true;

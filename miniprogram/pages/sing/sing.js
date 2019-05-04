@@ -127,6 +127,7 @@ Page({
 function signCloudFunction(signThis) {
   if (signThis.data.hasActivity) {
     wx.getLocation({
+      type: "gcj02",
       success: function (res) {
         wx.cloud.callFunction({
           name: 'sign',
