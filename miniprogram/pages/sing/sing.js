@@ -64,6 +64,7 @@ Page({
         console.log(res.data.length);
         if (res.data.length > 0) {
           console.log(res.data.length)
+          signThis.data.afterActivity = [];
           for (var i = 0; i < res.data.length; i++) {
             console.log(util.formatTime(res.data[i].beginTime))
             console.log(res.data[i].name);

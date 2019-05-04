@@ -8,7 +8,7 @@
     <button class="signButton">当前无活动</button>
   </block>
     <view class="activityName">
-      <text id="activityName">活动名称:{{nowActivity.name}}</text>
+      <text id="activityName" wx:if="{{hasActivity}}">活动名称:{{nowActivity.name}}</text>
     </view>
   </view>
   <view class="futureActivity">
