@@ -6,4 +6,16 @@
       <text id="activityName">活动名称:{{nowActivity.name}}</text>
     </view>
   </view>
+  <view class="futureActivity">
+    <text style='color:#bfbfbf'>未来活动</text>
+    <scroll-view class='futureList' scroll-y="true" scroll-into-view="item-0">
+      <block wx:for="{{afterActivity}}">
+        <view class="afterItem">
+          <text id="item-{{index}}">活动名称:{{item.activityName}}\n</text>
+          <text>活动开始日期:{{item.beginTime}}</text>
+          <text></text>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
 </view>

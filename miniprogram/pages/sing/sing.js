@@ -1,3 +1,4 @@
+var util=require("../util/util.js");
 const db=wx.cloud.database();
 const _=db.command;
 Page({
@@ -8,7 +9,7 @@ Page({
     isSign: false,
     hasActivity: false,
     nowActivity: {},
-    afterActivityName: {}
+    afterActivity: []
   },
 
   /**
@@ -39,14 +40,22 @@ Page({
       beginTime: _.gt(date)
     }).get({
       success: res=>{
+        console.log(res.data);
+        console.log(res.data.length);
         if(res.data.length>0){
-          var tempActivityName={};
-          for(var i=0;i<res.data.length;i++){
-            tempActivityName[i]=res.data[i].name;
-          }
-          signThis.setData({
-            afterActivityName: tempActivityName
-          });
+          console.log(res.data.length)
+         for(var i=0;i<res.data.length;i++){
+           console.log(util.formatTime(res.data[i].beginTime))
+           console.log(res.data[i].name);
+           signThis.data.afterActivity[i]={
+             activityName: res.data[i].name,
+             beginTime: util.formatTime(res.data[i].beginTime)
+           }
+         } 
+        console.log(signThis.data.afterActivity);
+         signThis.setData({
+          afterActivity: signThis.data.afterActivity
+         })
         }
       }
     })
@@ -171,9 +180,16 @@ function signCloudFunction(signThis) {
               isSign: false
             })
           }
-          wx.showToast({
-            title: res.result.toastTitle,
-          })
+          if(res.result.toastTitle=="签到成功"){
+            wx.showToast({
+              title: res.result.toastTitle,
+            })
+          }else{
+            wx.showToast({
+              title: res.result.toastTitle,
+              image: "../../images/warn.png"
+            })
+          }
         }).catch(console.error)
       },
     })
