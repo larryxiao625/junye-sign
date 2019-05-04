@@ -26,21 +26,8 @@
   flex-basis: auto
 }
 
-.tabShow{
-  width: 100%;
-  margin-top: 300;
-  background-color: red
-}
-
-.swiper-item{
-  position: fixed;
-  bottom: 0;
-}
-
-.swiper{
+.each-rank{
   height: 100%;
-  width: 100vw;
-  position: fixed;
-  bottom: 0rpx;
-  top: 80rpx
+  width: 100%;
+  margin-top: 80rpx
 }

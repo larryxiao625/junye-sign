@@ -1,10 +1,8 @@
 <view class="container">
   <scroll-view class="top-bar-nav" scroll-x="true">
-    <text class="top-bar-text" wx:for="{{tabCount}}">{{item.title}}</text>
+    <text class="top-bar-text" wx:for="{{tabCount}}" id="{{item.title}}" bindtap='navToPage' style='color:{{item.color}}'>{{item.title}}</text>
   </scroll-view>
-  <swiper class="swiper" display-multiple-items='1'>
-    <swiper-item class="swiper-item" wx:for="{{tabCount}}">
-      <text class="tabShow">{{item.title}}</text>
-    </swiper-item>
-  </swiper>
+  <view class='each-rank'>
+    <text>test</text>
+  </view>
 </view>

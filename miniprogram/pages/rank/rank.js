@@ -6,10 +6,12 @@ Page({
   data: {
     tabCount:[{
       "title": "周排名",
-      "rank": []
+      "rank": [],
+      "color": "#000000"
     },{
       "title": "月排名",
-      "rank": []
+      "rank": [],
+      "color": "#BFBFBF"
     }]
   },
 
@@ -67,5 +69,21 @@ Page({
    */
   onShareAppMessage: function () {
     
+  },
+  navToPage:function(event){
+    console.log(event);
+    if(event.currentTarget.id=="周排名"){
+      console.log("周排名")
+      this.setData({
+        'tabCount[0].color': '#000000',
+        'tabCount[1].color': '#BFBFBF'
+      })
+    } else if (event.currentTarget.id=="月排名"){
+      console.log("月排名")
+      this.setData({
+        'tabCount[0].color': '#BFBFBF',
+        'tabCount[1].color': '#000000'
+      })
+    }
   }
 })
