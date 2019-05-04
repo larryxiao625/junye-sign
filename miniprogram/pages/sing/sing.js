@@ -105,7 +105,31 @@ Page({
     console.log(signThis.data.nowActivity._id);
     wx.getSetting({
       success(res){
-        if(res.authSetting["scope.userLocation"]){
+        if(!res.authSetting["scope.userInfo"]){
+          wx.authorize({
+            scope: 'scope.userInfo',
+            success(){
+              if(!res.authSetting["scope.userLocation"]){
+                wx.authorize({
+                  scope: 'scope.userLocation',
+                  success() {
+                    signCloudFunction(signThis);
+                  },
+                  fail() {
+                    wx.showToast({
+                      title: '请授权权限以签到',
+                    })
+                  }
+                })
+              }
+            },
+            fail(){
+              wx.showToast({
+                title: '请授予权限',
+              })
+            }
+          })
+        }else if(res.authSetting["scope.userLocation"]){
           signCloudFunction(signThis);
         }else{
           wx.authorize({
