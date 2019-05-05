@@ -2,7 +2,7 @@
   <view class="签到">
   <block wx:if="{{hasActivity}}">
       <button class="signButton" wx:if="{{isSign}}">已签到</button>
-      <button class="signButton"  bindtap='sign' wx:if="{{!isSign}}">签到</button>
+      <button class="signButton" open-type='getUserInfo' bindtap='sign' wx:if="{{!isSign}}">签到</button>
   </block>
   <block wx:else>
     <button class="signButton">当前无活动</button>

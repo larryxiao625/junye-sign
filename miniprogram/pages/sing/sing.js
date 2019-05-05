@@ -129,7 +129,16 @@ Page({
                 wx.authorize({
                   scope: 'scope.userLocation',
                   success() {
-                    signCloudFunction(signThis);
+                    if(!res.authSetting["scope.userLocation"]){
+                      wx.authorize({
+                        scope: 'scope.userLocation',
+                        success(){
+                          signCloudFunction(signThis);
+                        }
+                      })
+                    }else{
+                      signCloudFunction(signThis);
+                    }
                   },
                   fail() {
                     wx.showToast({
