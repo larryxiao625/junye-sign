@@ -7,11 +7,13 @@ Page({
     tabCount:[{
       "title": "周排名",
       "rank": [],
-      "color": "#000000"
+      "color": "#000000",
+      "isSlected" : true
     },{
       "title": "月排名",
       "rank": [],
-      "color": "#BFBFBF"
+      "color": "#BFBFBF",
+      "isSlected": false
     }]
   },
 
@@ -33,7 +35,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    if(this.data.tabCount[0].isSlected){
+      rank("周排名",this);
+    }else{
+      rank("月排名",this);
+    }
   },
 
   /**
@@ -71,19 +77,54 @@ Page({
     
   },
   navToPage:function(event){
+    var rankThis=this;
     console.log(event);
     if(event.currentTarget.id=="周排名"){
-      console.log("周排名")
+      console.log("周排名");
+      rank("周排名",rankThis);
       this.setData({
         'tabCount[0].color': '#000000',
-        'tabCount[1].color': '#BFBFBF'
+        'tabCount[1].color': '#BFBFBF',
+        'tabCount[0].isSlected': true,
+        'tabCount[1].isSlected': false
       })
     } else if (event.currentTarget.id=="月排名"){
-      console.log("月排名")
+      console.log("月排名");
+      rank("月排名",rankThis);
       this.setData({
         'tabCount[0].color': '#BFBFBF',
-        'tabCount[1].color': '#000000'
+        'tabCount[1].color': '#000000',
+        'tabCount[1].isSlected': true,
+        'tabCount[0].isSlected': false
       })
     }
   }
 })
+function rank(type,rankThis){
+  if(type=="周排名"){
+    wx.cloud.callFunction({
+      name: 'rank',
+      data:{
+        type: type
+      },
+      complete: res=>{
+        console.log(res);
+        rankThis.setData({
+          'rankThis.data.tabCount[0].rank': res
+        })
+      },
+    })
+  }else if(type=="月排名"){
+    wx.cloud.callFunction({
+      name: 'rank',
+      data: {
+        type: type
+      },
+      complete: res => {
+        rankThis.setData({
+          'rankThis.data.tabCount[1].rank': res
+        })
+      },
+    })
+  }
+}

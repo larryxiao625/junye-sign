@@ -29,5 +29,7 @@
 .each-rank{
   height: 100%;
   width: 100%;
-  margin-top: 80rpx
+  margin-top: 100rpx;
+  text-align: center;
+  display: flex
 }
