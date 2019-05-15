@@ -121,6 +121,7 @@ Page({
      })
    }else if(this.data.name=="姓名"){
      console.log("update")
+     console.log(app.globalData.openid);
     db.collection('student').add({
        data:{
          stuName: e.detail.value.name,

@@ -63,7 +63,7 @@ function getMonth(){
   start = moment(date).month(moment().month() - 1).startOf('month').format("YYYY/MM/DD");
 }
 
-function rankThePeople(res){
+async function rankThePeople(res){
   console.log("gogogo");
   console.log(res.data.length);
   var count=0;
@@ -71,6 +71,13 @@ function rankThePeople(res){
   var number=0;
   for(var i=0;i<res.data.length;i++){
     console.log(res.data[i].signStudentId);
+    var name;
+    await db.collection('student').where({
+      stuOpenId: res.data[i].signStudentId
+    }).get().then(res=>{
+      name=res.stuName;
+    });
+    console.log(name);
     if(i===0){
       id=res.data[i].signStudentId;
       count++;
