@@ -14,7 +14,8 @@ Page({
       "rank": [],
       "color": "#BFBFBF",
       "isSlected": false
-    }]
+    }],
+    showSelect: []
   },
 
   /**
@@ -110,8 +111,10 @@ function rank(type,rankThis){
       complete: res=>{
         console.log(res);
         rankThis.setData({
-          'rankThis.data.tabCount[0].rank': res
-        })
+          'rankThis.data.tabCount[0].rank': res.result,
+          showSelect: res.result
+        });
+        console.log(res.result);
       },
     })
   }else if(type=="月排名"){
@@ -122,8 +125,10 @@ function rank(type,rankThis){
       },
       complete: res => {
         rankThis.setData({
-          'rankThis.data.tabCount[1].rank': res
+          'rankThis.data.tabCount[1].rank': res.result,
+          showSelect: res.result
         })
+        console.log(res.result);
       },
     })
   }

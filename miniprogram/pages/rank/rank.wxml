@@ -3,9 +3,13 @@
     <text class="top-bar-text" wx:for="{{tabCount}}" id="{{item.title}}" bindtap='navToPage' style='color:{{item.color}}'>{{item.title}}</text>
   </scroll-view>
   <view class='each-rank'>
-    <view class='each-person' style='display:flex;width:100%'>
+    <view class='each-person' >
       <text style='flex:1' >姓名</text>
       <text style='flex:1'>次数</text>
+    </view>
+    <view class='person' wx:for='{{showSelect}}'>
+      <text style='flex:1' >{{item.stuId}}</text>
+      <text style='flex:1'>{{item.count}}</text>
     </view>
   </view>
 </view>
