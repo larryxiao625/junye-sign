@@ -1,3 +1,15 @@
+.container{
+  display: flex;
+  background-color: #EFEFF4;
+  width: 100vw;
+  height: 100vh;
+}
+.input-info{
+  background-color: #ffffff;
+  width: 80vw;
+  margin-top: 50rpx;
+  height: 100rpx;
+}
 .getUserInfoButton{
   color: #ffffff;
   background-color: #26e90d;
@@ -11,7 +23,7 @@
 }
 
 .getUserInfoButton{
-  color: #ffffff;
+  color: #da9797;
   line-height: 50px;
 }
 .userinfo-avatar {
@@ -27,6 +39,10 @@
 
 .userInfoShow{
   display: flex;
-  flex-direction: column;
-  
+  flex-direction: column; 
+}
+
+.btn-area{
+  width: 60vw;
+  margin-top: 50rpx
 }

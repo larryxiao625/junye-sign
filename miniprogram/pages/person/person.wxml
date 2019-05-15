@@ -8,4 +8,11 @@
     </view>
     </block>
   </view>
+  <view class='userinfo-input' >
+  <form bindsubmit='formSubmit'>
+    <input wx:if="{{canIUse&&hasUserInfo}}" name='name' class='input-info' placeholder='{{name}}' />
+    <input wx:if="{{canIUse&&hasUserInfo}}" name='stuId' class='input-info' placeholder='{{stuId}}' />
+    <button form-type='submit' wx:if="{{canIUse&&hasUserInfo}}" class="btn-area" plain='true' bindtap="bindButtonTap">更新资料</button>
+  </form>
+  </view>
 </view>
